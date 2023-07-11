@@ -98,19 +98,11 @@ def main():
     input_df = pd.DataFrame(user_input, index=[0])
 
     # Predict churn risk score
-    col1, col2, col3 = st.columns(3)
+    if st.button("Predict Churn Risk Score"):
+        predictions = predict_churn_risk(input_df)
+        churn_risk_score = predictions[0]
+        st.success(f"The predicted churn risk score is: {churn_risk_score}")
 
-    with col1:
-        pass
-
-    with col2:
-        if st.button("Predict Churn Risk Score"):
-            predictions = predict_churn_risk(input_df)
-            churn_risk_score = predictions[0]
-            st.success(f"The predicted churn risk score is: {churn_risk_score}")
-
-    with col3:
-        pass
 
 # Run the app
 if __name__ == '__main__':
